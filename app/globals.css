@@ -1,0 +1,167 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --primary: #ff6b6b;
+  --secondary: #4ecdc4;
+  --dark: #2d3436;
+  --light: #f7f7f7;
+  --accent: #ffbe76;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-light text-dark font-poppins;
+  line-height: 1.6;
+}
+
+.container {
+  @apply w-full max-w-[1200px] mx-auto px-5;
+}
+
+/* Custom Components */
+.cta-button {
+  @apply bg-primary text-white px-5 py-2.5 rounded-full font-medium transition-colors duration-300 hover:bg-[#ff5252];
+}
+
+.secondary-button {
+  @apply bg-transparent text-primary border-2 border-primary px-5 py-2.5 rounded-full font-medium transition-all duration-300 hover:bg-primary hover:text-white;
+}
+
+.service-card {
+  @apply bg-light rounded-lg p-8 shadow-lg transition-all duration-300 hover:-translate-y-2.5 hover:shadow-xl;
+}
+
+.portfolio-item {
+  @apply rounded-lg overflow-hidden relative shadow-lg;
+}
+
+.portfolio-overlay {
+  @apply absolute inset-0 bg-primary/80 flex flex-col justify-center items-center opacity-0 transition-opacity duration-500;
+}
+
+.portfolio-item:hover .portfolio-overlay {
+  @apply opacity-100;
+}
+
+.testimonial-card {
+  @apply bg-white rounded-lg p-10 shadow-lg text-center;
+}
+
+.contact-icon {
+  @apply w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white mr-4;
+}
+
+.social-links a {
+  @apply flex items-center justify-center w-10 h-10 bg-white/10 rounded-full text-white transition-colors duration-300 hover:bg-primary;
+}
+
+/* 3D Card Effect */
+.card-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  perspective: 1000px;
+}
+
+.card-3d:hover {
+  transform: translateY(-10px) rotateX(5deg);
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+}
+
+.card-3d::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  transform: translateZ(20px);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-3d:hover::before {
+  opacity: 0.8;
+}
+
+.card-3d::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  transform: translateZ(-20px);
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.card-3d:hover::after {
+  opacity: 0.4;
+}
+
+/* Card Shine Effect */
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+      45deg,
+      transparent 0%,
+      rgba(255,255,255,0.1) 50%,
+      transparent 100%
+  );
+  transform: rotate(45deg);
+  transition: transform 0.5s ease;
+  pointer-events: none;
+}
+
+.card-shine:hover::before {
+  transform: rotate(45deg) translate(50%, 50%);
+}
+
+/* Reusable Flex Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Reusable Transitions */
+.transition-slow {
+  transition: all 0.5s ease;
+}
+
+.transition-fast {
+  transition: all 0.15s ease;
+} 
